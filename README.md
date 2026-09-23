@@ -1,25 +1,26 @@
-# Sarvatobhadra App v0.4
+# Sarvatobhadra App v0.5
 
-**Same project / same repository — update only.**
+This is the next update of the same `sarvato-playstore` repository.
 
-### Added
-- Classical-style 9x9 Sarvatobhadra grid structure.
-- 28 nakshatra outer ring including Abhijit.
-- Rashi, akshara and grouped tithi layers.
-- Real Swiss Ephemeris-backed API client.
-- Included a small FastAPI + pyswisseph backend under `ephemeris-server/`.
-- GitHub Actions workflow that builds a debug APK automatically.
+## v0.5
+- 9x9 / 81-cell classical Sarvatobhadra layout.
+- 28 Nakshatras including Abhijit.
+- Rashi, akshara, tithi and weekday cells.
+- Natal point highlighting.
+- Transit Vedha engine with front/left/right rays.
+- Motion rule: normal=front, fast=left, retrograde=right for Mars/Mercury/Jupiter/Venus/Saturn.
+- Sun/Moon/Rahu/Ketu use all three directions in the selected rule set.
+- Benefic/malefic classification.
+- Real Swiss-Ephemeris-backed FastAPI service.
+- Fixed GitHub Actions workflow: setup-android v4, checkout v6, setup-java v5, setup-gradle v6, Gradle 8.7.
 
-### Backend
-Run:
-`cd ephemeris-server`
-`pip install -r requirements.txt`
-`uvicorn main:app --host 0.0.0.0 --port 8080`
+## Build
+The workflow can build a debug APK without a Gradle wrapper by installing Gradle 8.7 through setup-gradle.
 
-Then build Android with:
-`./gradlew assembleDebug -PEPHEMERIS_BASE_URL=http://YOUR_SERVER:8080`
+For the real planetary results, deploy `ephemeris-server` and pass its URL to the Android build as `EPHEMERIS_BASE_URL` in a later production configuration. Do not put private API keys in source.
 
-For a public/commercial deployment, review Swiss Ephemeris licensing. The Swiss Ephemeris project is dual-licensed; the AGPL path has source-sharing obligations for covered deployments.
+## Licensing
+Swiss Ephemeris is separately licensed software. Before commercial distribution, review its AGPL/Professional licensing terms and comply with the selected license.
 
-### Important
-This version implements the calculation plumbing and grid. The exact Sarvatobhadra Vedha-ray rules and name-akshara mapping are kept as the next module because traditions and published layouts differ in some details. Do not market this version as a finished replica of another app.
+## Sources / rule note
+The published Sarvatobhadra figure used here is consistent with the 9x9 chart reproduced in Vedic astrology references. Vedha motion rules vary by textual tradition, so this version labels the selected rule as the Mansagari-style rule rather than claiming all traditions use identical rules.
