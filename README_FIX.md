@@ -1,14 +1,7 @@
-# v0.5.1 build fix
-
-The failed build was caused by AndroidX dependencies being present while
-`android.useAndroidX` was not enabled.
-
-The important fix is in the repository root:
-
-android.useAndroidX=true
-
-`android.enableJetifier=true` is also enabled for compatibility with any
-legacy third-party dependency.
-
-After copying these files into the existing `sarvato-playstore` repository,
-commit/push and run the GitHub Actions workflow again.
+Build fixes included:
+- Removed duplicate PlanetPosition and AstrologyConstants declarations.
+- Fixed Kotlin getter syntax in the astrology model.
+- Kept latitude in PlanetPosition and used named arguments in EphemerisApi.
+- Enabled Android BuildConfig and defined EPHEMERIS_BASE_URL from the Gradle property.
+- Java/Kotlin JVM target remains 17.
+- Android SDK setup uses setup-android v4.
