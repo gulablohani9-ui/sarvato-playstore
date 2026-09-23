@@ -1,21 +1,25 @@
-# Sarvatobhadra App v0.3
+# Sarvatobhadra App v0.4
 
-This is an update of the same Android project, not a separate app.
+**Same project / same repository — update only.**
 
-## What changed
-- Removed the fake/demo planetary calculation path.
-- Added `EphemerisProvider` abstraction.
-- Added `HttpEphemerisProvider` for a real Swiss-Ephemeris-backed calculation service.
-- Requests Lahiri sidereal positions with date/time, timezone, latitude and longitude.
-- UI refuses to show fake planetary positions if the production endpoint is not configured.
+### Added
+- Classical-style 9x9 Sarvatobhadra grid structure.
+- 28 nakshatra outer ring including Abhijit.
+- Rashi, akshara and grouped tithi layers.
+- Real Swiss Ephemeris-backed API client.
+- Included a small FastAPI + pyswisseph backend under `ephemeris-server/`.
+- GitHub Actions workflow that builds a debug APK automatically.
 
-## Important licensing
-Swiss Ephemeris is dual-licensed: AGPL or Swiss Ephemeris Professional License. If you distribute an app containing Swiss Ephemeris, choose and comply with the applicable license before distribution. See the official Swiss Ephemeris license and documentation.
+### Backend
+Run:
+`cd ephemeris-server`
+`pip install -r requirements.txt`
+`uvicorn main:app --host 0.0.0.0 --port 8080`
 
-## Next
-1. Deploy/choose a properly licensed ephemeris backend or integrate a properly licensed native implementation.
-2. Set `endpoint` in `MainActivity.kt`.
-3. Add strict JSON schema validation and test vectors.
-4. Then implement Sarvatobhadra placement, Vedha, transit, Navatara and Upagraha.
+Then build Android with:
+`./gradlew assembleDebug -PEPHEMERIS_BASE_URL=http://YOUR_SERVER:8080`
 
-This project does NOT copy the source code, branding or artwork of any other astrology application.
+For a public/commercial deployment, review Swiss Ephemeris licensing. The Swiss Ephemeris project is dual-licensed; the AGPL path has source-sharing obligations for covered deployments.
+
+### Important
+This version implements the calculation plumbing and grid. The exact Sarvatobhadra Vedha-ray rules and name-akshara mapping are kept as the next module because traditions and published layouts differ in some details. Do not market this version as a finished replica of another app.
