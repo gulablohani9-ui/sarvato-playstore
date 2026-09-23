@@ -4,10 +4,17 @@ plugins {
 }
 
 android {
+    val ephemerisBaseUrl = project.findProperty("EPHEMERIS_BASE_URL")?.toString() ?: ""
+
+    buildFeatures {
+        buildConfig = true
+    }
+
     namespace = "com.example.sarvatobhadra"
     compileSdk = 35
 
     defaultConfig {
+        buildConfigField("String", "EPHEMERIS_BASE_URL", "\"${ephemerisBaseUrl.replace("\"", "\\\"")}\"")
         applicationId = "com.example.sarvatobhadra"
         minSdk = 24
         targetSdk = 35
