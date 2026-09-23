@@ -9,12 +9,9 @@ android {
         applicationId="com.example.sarvatobhadra"
         minSdk=24
         targetSdk=35
-        versionCode=4
-        versionName="0.4.0"
-        buildConfigField("String","EPHEMERIS_BASE_URL","\"${project.findProperty("EPHEMERIS_BASE_URL") ?: ""}\"")
-        buildConfigField("String","APP_VERSION","\"0.4.0\"")
+        versionCode=5
+        versionName="0.5.0"
     }
-    buildFeatures { buildConfig=true }
 }
 dependencies {
     implementation("androidx.core:core-ktx:1.15.0")
