@@ -20,7 +20,7 @@ class EphemerisApi(private val base:String){
    val list=buildList{
     for(i in 0 until arr.length()){
      val p=arr.getJSONObject(i);val s=p.getJSONObject("sidereal")
-     add(PlanetPosition(p.getString("key"),s.getDouble("longitude"),s.optDouble("speed",0.0),s.optBoolean("retrograde",false)))
+     add(PlanetPosition(planet = p.getString("key"), longitude = s.getDouble("longitude"), latitude = s.optDouble("latitude", 0.0), speed = s.optDouble("speed", 0.0), retrograde = s.optBoolean("retrograde", false)))
     }
    }
    ChartResponse(list,o.optInt("tithi",1),o.optInt("weekday",0))

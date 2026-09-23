@@ -21,4 +21,6 @@ object AstrologyConstants {
         "Shatabhisha","Purva Bhadrapada","Uttara Bhadrapada","Revati"
     )
     val rashis = listOf("Mesha","Vrishabha","Mithuna","Karka","Simha","Kanya","Tula","Vrishchika","Dhanu","Makara","Kumbha","Meena")
+    val benefics = setOf("moon","mercury","jupiter","venus")
+    val malefics = setOf("sun","mars","saturn","rahu","ketu")
 }
